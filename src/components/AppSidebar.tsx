@@ -173,7 +173,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const [activeTab, setActiveTab] = React.useState("Favorites");
 
   return (
-    <Sidebar {...props} side="left">
+    <Sidebar {...props} side="left" className="fixed">
       <SidebarHeader>
         <div className="flex items-center gap-2 px-2 py-2">
           <Avatar className="h-8 w-8">

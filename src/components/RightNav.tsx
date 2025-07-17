@@ -129,7 +129,7 @@ const contactsData = [
 
 export function RightNav({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
-    <Sidebar side="right" className="w-70" {...props}>
+    <Sidebar side="right" className="w-65 fixed" {...props}>
       <SidebarContent>
         <ScrollArea className="h-full">
           {/* Notifications Section */}

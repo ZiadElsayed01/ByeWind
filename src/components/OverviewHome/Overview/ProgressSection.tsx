@@ -1,14 +1,14 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import InfoBlock from './components/InfoBlock'
 import { Progress } from '@/components/ui/progress';
-import snowui_icon from "../../../../assets/SnowUI_Icon.png"
-import avatar from "../../../../assets/avatar.png"
-import frame from "../../../../assets/Frame.png"
+import snowui_icon from "../../../assets/SnowUI_Icon.png"
+import avatar from "../../../assets/avatar.png"
+import frame from "../../../assets/Frame.png"
 import {
   Avatar,
   AvatarFallback,
   AvatarImage,
 } from "@/components/ui/avatar"
+import InfoBlock from '@/components/InfoBlock';
 
 
 export default function ProgressSection() {
@@ -54,7 +54,6 @@ export default function ProgressSection() {
             </Avatar>
             <Avatar>
               <AvatarImage src={frame} alt="@shadcn" />
-              <AvatarFallback>LR</AvatarFallback>
             </Avatar>
             <Avatar>
               <AvatarFallback className="bg-[#edeefc]">+3</AvatarFallback>
