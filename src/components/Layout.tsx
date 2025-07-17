@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom"
 import { RightNav } from "./RightNav"
 import { Header } from "@/components/Header"
 import { useSidebar } from "@/components/ui/sidebar"
-import Navigation from "./Navigation"
+import Navigation from "./OverviewHome/Navigation"
 
 function MainLayout() {
   const { left, right } = useSidebar()
