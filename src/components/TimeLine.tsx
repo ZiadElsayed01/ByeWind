@@ -1,4 +1,4 @@
-import type { IDate } from "@/types/dates";
+import type { IDate } from "@/types/Types";
 import { useState } from "react";
 
 

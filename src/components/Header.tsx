@@ -81,9 +81,6 @@ export function Header() {
           </div>
         </div>
       </div>
-
-
-      {/* Right Section */}
     </header>
   );
 }

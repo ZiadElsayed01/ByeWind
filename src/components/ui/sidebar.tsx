@@ -82,8 +82,8 @@ function SidebarProvider({
 
   // Normalize defaultOpen
   const normalizedDefaultOpen = typeof defaultOpen === 'boolean'
-    ? { left: defaultOpen, right: false }
-    : { left: defaultOpen.left ?? true, right: defaultOpen.right ?? false };
+    ? { left: defaultOpen, right: true }
+    : { left: defaultOpen.left ?? true, right: defaultOpen.right ?? true };
 
   // Internal state
   const [_leftOpen, _setLeftOpen] = React.useState(normalizedDefaultOpen.left);
@@ -250,7 +250,7 @@ function Sidebar({
 
   return (
     <div
-      className="group peer text-sidebar-foreground hidden md:block"
+      className="group peer text-sidebar-foreground hidden lg:block"
       data-state={sidebar.state}
       data-collapsible={sidebar.state === "collapsed" ? collapsible : ""}
       data-variant={variant}

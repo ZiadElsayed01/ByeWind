@@ -1,4 +1,4 @@
-import type { Activity } from "@/types/activities";
+import type { Activity } from "@/types/Types";
 import { Avatar, AvatarImage } from "./ui/avatar";
 
 type TimelineActivityProps = {

@@ -19,3 +19,16 @@ export interface IFile {
   type: string;
   downloadable: boolean;
 }
+
+export interface IUsers {
+  clientName: string;
+  code: string;
+  createdAt: string;
+  date: string;
+  nurseName: string;
+  paymentStatus: string;
+  status: string;
+  total: number;
+  updatedAt: string;
+  _id: number;
+}
