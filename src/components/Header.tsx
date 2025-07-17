@@ -27,7 +27,7 @@ export function Header() {
           <Button variant="ghost" size="icon" className="h-6 w-6">
             <Star className="h-4 w-4" />
           </Button>
-          <Breadcrumb>
+          <Breadcrumb className="hidden md:block">
             <BreadcrumbList>
               <BreadcrumbItem>
                 <BreadcrumbLink to="/">Dashboards</BreadcrumbLink>
@@ -39,7 +39,7 @@ export function Header() {
             </BreadcrumbList>
           </Breadcrumb>
         </div>
-        <div className="flex items-center">
+        <div className="flex items-center w-[300px]">
           <div className="relative">
             <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             <Input

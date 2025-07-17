@@ -20,10 +20,10 @@ const navItems = [
 export default function Navigation() {
   return (
     <>
-      <div className="flex items-center justify-between w-full bg-white p-5">
+      <div className="md:flex items-center flex-wrap justify-between w-full bg-white p-5">
         {/* Left navigation menu */}
         <NavigationMenu>
-          <NavigationMenuList className="flex gap-5">
+          <NavigationMenuList className="flex flex-col md:flex-row gap-5 mb-3 lg:mb-0">
             {navItems.map((item, index) => (
               <NavigationMenuLink key={index} asChild>
                 <NavLink

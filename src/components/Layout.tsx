@@ -3,7 +3,7 @@ import { AppSidebar } from "@/components/AppSidebar";
 import { Outlet } from "react-router-dom";
 import { RightNav } from "./RightNav";
 import { Header } from "@/components/Header";
-import { useSidebar } from "@/components/ui/sidebar";
+import { useSidebar } from "./../hooks/use-sidebar";
 
 function MainLayout() {
   const { left, right } = useSidebar();

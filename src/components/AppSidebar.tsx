@@ -28,7 +28,6 @@ import {
   SidebarMenuSub,
   SidebarMenuSubButton,
   SidebarMenuSubItem,
-  SidebarRail,
 } from "@/components/ui/sidebar";
 import {
   Collapsible,
@@ -322,8 +321,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <img src={footerLogo} alt="SnowUI" />
         </div>
       </SidebarFooter>
-
-      <SidebarRail />
     </Sidebar>
   );
 }
