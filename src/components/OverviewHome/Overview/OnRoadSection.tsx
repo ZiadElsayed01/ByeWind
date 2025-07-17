@@ -4,10 +4,9 @@ import AvatarMale06 from "@/assets/Avatar_Male_06.png";
 import Frame1 from "@/assets/Frame(1).png";
 import AvatarAbstract01 from "@/assets/Avatar_Abstract_01.png";
 import Frame2 from "@/assets/Frame_(2).png";
-import type { IDate } from "@/types/dates";
 import Timeline from "@/components/TimeLine";
 import TimelineActivity from "@/components/TimeLineActivity";
-import type { Activity } from "@/types/activities";
+import type { Activity, IDate } from "@/types/Types";
 
 export type TimelineActivityProps = {
   dates: IDate[];
@@ -48,17 +47,10 @@ export default function OnRoadSection() {
   ];
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 md:gap-5">
-      <Card className="my-6 gap-3">
-        <CardTitle>What's on the road?</CardTitle>
-        <Timeline />
-        <TimelineActivity activities={activities} />
-      </Card>
-
-      <Card className="my-6">
-        <CardTitle>What's on the road?</CardTitle>
-      </Card>
-    </div>
-
+    <Card className="gap-3">
+      <CardTitle>What's on the road?</CardTitle>
+      <Timeline />
+      <TimelineActivity activities={activities} />
+    </Card>
   )
 }

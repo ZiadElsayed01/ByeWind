@@ -18,4 +18,33 @@ function Input({ className, type, ...props }: React.ComponentProps<"input">) {
   )
 }
 
-export { Input }
+function FileInputButton({ className, ...props }: React.ComponentProps<"input">) {
+  const inputRef = React.useRef<HTMLInputElement>(null);
+
+  const handleClick = () => {
+    inputRef.current?.click();
+  };
+
+  return (
+    <div>
+      <input
+        ref={inputRef}
+        type="file"
+        className="hidden"
+        {...props}
+      />
+      <button
+        type="button"
+        onClick={handleClick}
+        className={cn(
+          "inline-flex items-center justify-center rounded-md bg-gray-200 text-black px-4 py-2 text-sm font-medium shadow hover:bg-primary/90 transition",
+          className
+        )}
+      >
+        Upload
+      </button>
+    </div>
+  );
+}
+
+export { Input, FileInputButton }
