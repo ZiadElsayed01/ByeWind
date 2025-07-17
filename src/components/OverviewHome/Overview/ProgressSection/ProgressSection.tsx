@@ -1,5 +1,14 @@
-import { Card, CardContent, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import InfoBlock from './components/InfoBlock'
+import { Progress } from '@/components/ui/progress';
+import snowui_icon from "../../../../assets/SnowUI_Icon.png"
+import avatar from "../../../../assets/avatar.png"
+import frame from "../../../../assets/Frame.png"
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/components/ui/avatar"
 
 
 export default function ProgressSection() {
@@ -11,20 +20,47 @@ export default function ProgressSection() {
 
   return (
     <Card>
-      <CardTitle className='text-lg'>SnowUI</CardTitle>
-      <CardContent className='flex p-0'>
-        <InfoBlock title="Status" content="kmklsmkldmsl" className="pr-6" />
-        <InfoBlock
-          title="Total Tasks"
-          content={
+      <CardHeader className='flex items-center justify-between p-0 m-0'>
+        <CardTitle className='text-lg'>SnowUI</CardTitle>
+        <img src={snowui_icon} alt="SnowUI_Icon" width={40} height={40} />
+      </CardHeader>
+      <CardContent className='lg:flex p-0 gap-0 justify-between'>
+        <div className='flex items-center'>
+          <InfoBlock title="Status" content={
             <>
-              15 <span className="text-gray-300">/</span> 48
+              <Progress value={51} className='h-6 w-40 mt-1 relative' text={
+                <>
+                  In Progress<span className="text-gray-400 mx-1"> /  </span>51%
+                </>
+              } />
             </>
-          }
-          className="px-6"
-        />
-        <InfoBlock title="Due Data" content={date} className="px-6 " />
-        <InfoBlock title="Budget Spent" content="$15,000" className="px-6" />
+          } className="lg:pr-6" />
+          <InfoBlock
+            title="Total Tasks"
+            content={
+              <>
+                15 <span className="text-gray-300">/</span> 48
+              </>
+            }
+            className="lg:px-6"
+          />
+          <InfoBlock title="Due Data" content={date} className="lg:px-6 " />
+          <InfoBlock title="Budget Spent" content="$15,000" className="lg:px-6" />
+        </div>
+        <div className="flex flex-row flex-wrap items-center gap-12">
+          <div className="*:data-[slot=avatar]:ring-background flex -space-x-2">
+            <Avatar>
+              <AvatarImage src={avatar} alt="@shadcn" />
+            </Avatar>
+            <Avatar>
+              <AvatarImage src={frame} alt="@shadcn" />
+              <AvatarFallback>LR</AvatarFallback>
+            </Avatar>
+            <Avatar>
+              <AvatarFallback className="bg-[#edeefc]">+3</AvatarFallback>
+            </Avatar>
+          </div>
+        </div>
       </CardContent>
     </Card>
   )
