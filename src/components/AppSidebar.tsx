@@ -34,16 +34,17 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import footerLogo from "../assets/SnowUI_Logo.png";
 import { Link } from "react-router-dom";
+import avatar from "../assets/avatar.png";
 
 // Navigation data structure
 const navigationData = {
   user: {
     name: "ByeWind",
-    avatar: "/src/assets/avatar.png",
+    avatar: avatar,
   },
   topLevel: [
     {
@@ -181,7 +182,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               src={navigationData.user.avatar}
               alt={navigationData.user.name}
             />
-            <AvatarFallback>BW</AvatarFallback>
           </Avatar>
           <span className="font-mono text-sidebar-foreground">
             {navigationData.user.name}
