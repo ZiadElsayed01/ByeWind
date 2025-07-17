@@ -1,0 +1,55 @@
+import {
+  NavigationMenu,
+  NavigationMenuList,
+} from "@/components/ui/navigation-menu";
+import { Button } from "@/components/ui/button";
+import { MoreHorizontal } from "lucide-react";
+import { NavigationMenuLink } from "@radix-ui/react-navigation-menu";
+import { NavLink } from "react-router-dom";
+
+const navItems = [
+  { name: "Overview", path: "/overview/overview" },
+  { name: "Targets", path: "/overview/targets" },
+  { name: "Budget", path: "/overview/budget" },
+  { name: "Users", path: "/overview/users" },
+  { name: "Files", path: "/overview/files" },
+  { name: "Activity", path: "/overview/activity" },
+  { name: "Settings", path: "/overview/settings" },
+];
+
+export default function Navigation() {
+  return (
+    <>
+      <div className="flex items-center justify-between w-full bg-white p-5">
+        {/* Left navigation menu */}
+        <NavigationMenu>
+          <NavigationMenuList className="flex gap-5">
+            {navItems.map((item, index) => (
+              <NavigationMenuLink key={index} asChild>
+                <NavLink
+                  to={item.path}
+                  className={`text-sm py-1 font-medium text-gray-400`}
+                >
+                  {item.name}
+                </NavLink>
+              </NavigationMenuLink>
+            ))}
+          </NavigationMenuList>
+        </NavigationMenu>
+
+        {/* Right actions */}
+        <div className="flex items-center gap-2">
+          <Button variant="secondary" size="sm" className="text-sm text-gray-400">
+            + Add User
+          </Button>
+          <Button variant="secondary" size="sm" className="text-sm text-gray-400">
+            Add Target
+          </Button>
+          <Button variant="secondary" size="sm" className="text-sm">
+            <MoreHorizontal className="h-4 w-4" />
+          </Button>
+        </div>
+      </div>
+    </>
+  );
+}
