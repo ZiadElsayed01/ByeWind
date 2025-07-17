@@ -8,13 +8,13 @@ import { NavigationMenuLink } from "@radix-ui/react-navigation-menu";
 import { NavLink } from "react-router-dom";
 
 const navItems = [
-  { name: "Overview", path: "/overview/overview" },
-  { name: "Targets", path: "/overview/targets" },
-  { name: "Budget", path: "/overview/budget" },
-  { name: "Users", path: "/overview/users" },
-  { name: "Files", path: "/overview/files" },
-  { name: "Activity", path: "/overview/activity" },
-  { name: "Settings", path: "/overview/settings" },
+  { name: "Overview", path: "/" },
+  { name: "Targets", path: "targets" },
+  { name: "Budget", path: "budget" },
+  { name: "Users", path: "users" },
+  { name: "Files", path: "files" },
+  { name: "Activity", path: "activity" },
+  { name: "Settings", path: "settings" },
 ];
 
 export default function Navigation() {
@@ -39,10 +39,18 @@ export default function Navigation() {
 
         {/* Right actions */}
         <div className="flex items-center gap-2">
-          <Button variant="secondary" size="sm" className="text-sm text-gray-400">
+          <Button
+            variant="secondary"
+            size="sm"
+            className="text-sm text-gray-400"
+          >
             + Add User
           </Button>
-          <Button variant="secondary" size="sm" className="text-sm text-gray-400">
+          <Button
+            variant="secondary"
+            size="sm"
+            className="text-sm text-gray-400"
+          >
             Add Target
           </Button>
           <Button variant="secondary" size="sm" className="text-sm">

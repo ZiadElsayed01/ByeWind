@@ -28,14 +28,14 @@ import {
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state";
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;
-const SIDEBAR_WIDTH = "16rem";
+const SIDEBAR_WIDTH = "15rem";
 const SIDEBAR_WIDTH_MOBILE = "18rem";
 const SIDEBAR_WIDTH_ICON = "3rem";
 const SIDEBAR_KEYBOARD_SHORTCUT = "b";
 
 type SidebarContextProps = {
   left: {
-    state: 'expanded' | 'collapsed';
+    state: "expanded" | "collapsed";
     open: boolean;
     setOpen: (value: boolean | ((value: boolean) => boolean)) => void;
     isMobile: boolean;
@@ -43,14 +43,14 @@ type SidebarContextProps = {
     setOpenMobile: (value: boolean | ((value: boolean) => boolean)) => void;
   };
   right: {
-    state: 'expanded' | 'collapsed';
+    state: "expanded" | "collapsed";
     open: boolean;
     setOpen: (value: boolean | ((value: boolean) => boolean)) => void;
     isMobile: boolean;
     openMobile: boolean;
     setOpenMobile: (value: boolean | ((value: boolean) => boolean)) => void;
   };
-  toggleSidebar: (side: 'left' | 'right') => void;
+  toggleSidebar: (side: "left" | "right") => void;
 };
 
 const SidebarContext = React.createContext<SidebarContextProps | null>(null);
@@ -78,95 +78,118 @@ function SidebarProvider({
   onOpenChange?: (open: { left: boolean; right: boolean }) => void;
 }) {
   const isMobile = useIsMobile();
-  const [openMobile, setOpenMobile] = React.useState({ left: false, right: false });
+  const [openMobile, setOpenMobile] = React.useState({
+    left: false,
+    right: false,
+  });
 
   // Normalize defaultOpen
-  const normalizedDefaultOpen = typeof defaultOpen === 'boolean'
-    ? { left: defaultOpen, right: true }
-    : { left: defaultOpen.left ?? true, right: defaultOpen.right ?? true };
+  const normalizedDefaultOpen =
+    typeof defaultOpen === "boolean"
+      ? { left: defaultOpen, right: true }
+      : { left: defaultOpen.left ?? true, right: defaultOpen.right ?? true };
 
   // Internal state
   const [_leftOpen, _setLeftOpen] = React.useState(normalizedDefaultOpen.left);
-  const [_rightOpen, _setRightOpen] = React.useState(normalizedDefaultOpen.right);
+  const [_rightOpen, _setRightOpen] = React.useState(
+    normalizedDefaultOpen.right
+  );
 
   // Normalize openProp
-  const normalizedOpenProp = typeof openProp === 'boolean'
-    ? { left: openProp, right: false }
-    : openProp || {};
+  const normalizedOpenProp =
+    typeof openProp === "boolean"
+      ? { left: openProp, right: false }
+      : openProp || {};
 
   // Controlled state
   const leftOpen = normalizedOpenProp.left ?? _leftOpen;
   const rightOpen = normalizedOpenProp.right ?? _rightOpen;
 
-  const setSidebarState = React.useCallback((side: 'left' | 'right', value: boolean) => {
-    const newState = {
-      left: side === 'left' ? value : leftOpen,
-      right: side === 'right' ? value : rightOpen
-    };
+  const setSidebarState = React.useCallback(
+    (side: "left" | "right", value: boolean) => {
+      const newState = {
+        left: side === "left" ? value : leftOpen,
+        right: side === "right" ? value : rightOpen,
+      };
 
-    if (setOpenProp) {
-      setOpenProp(newState);
-    } else {
-      if (side === 'left') _setLeftOpen(value);
-      if (side === 'right') _setRightOpen(value);
-    }
+      if (setOpenProp) {
+        setOpenProp(newState);
+      } else {
+        if (side === "left") _setLeftOpen(value);
+        if (side === "right") _setRightOpen(value);
+      }
 
-    // Save to cookie
-    document.cookie = `${SIDEBAR_COOKIE_NAME}_${side}=${value}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`;
-  }, [setOpenProp, leftOpen, rightOpen]);
+      // Save to cookie
+      document.cookie = `${SIDEBAR_COOKIE_NAME}_${side}=${value}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`;
+    },
+    [setOpenProp, leftOpen, rightOpen]
+  );
 
-  const toggleSidebar = React.useCallback((side: 'left' | 'right') => {
-    if (isMobile) {
-      setOpenMobile(prev => ({ ...prev, [side]: !prev[side] }));
-    } else {
-      const currentState = side === 'left' ? leftOpen : rightOpen;
-      setSidebarState(side, !currentState);
-    }
-  }, [isMobile, leftOpen, rightOpen, setSidebarState]);
+  const toggleSidebar = React.useCallback(
+    (side: "left" | "right") => {
+      if (isMobile) {
+        setOpenMobile((prev) => ({ ...prev, [side]: !prev[side] }));
+      } else {
+        const currentState = side === "left" ? leftOpen : rightOpen;
+        setSidebarState(side, !currentState);
+      }
+    },
+    [isMobile, leftOpen, rightOpen, setSidebarState]
+  );
 
   // Keyboard shortcut (Ctrl/Cmd + B) - toggles left sidebar by default
   React.useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      if ((event.metaKey || event.ctrlKey) && event.key === SIDEBAR_KEYBOARD_SHORTCUT) {
+      if (
+        (event.metaKey || event.ctrlKey) &&
+        event.key === SIDEBAR_KEYBOARD_SHORTCUT
+      ) {
         event.preventDefault();
-        toggleSidebar('left');
+        toggleSidebar("left");
       }
     };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, [toggleSidebar]);
 
-  const contextValue = React.useMemo<SidebarContextProps>(() => ({
-    left: {
-      state: leftOpen ? 'expanded' : 'collapsed',
-      open: isMobile ? openMobile.left : leftOpen,
-      setOpen: (value) => {
-        const newValue = typeof value === 'function' ? value(leftOpen) : value;
-        setSidebarState('left', newValue);
+  const contextValue = React.useMemo<SidebarContextProps>(
+    () => ({
+      left: {
+        state: leftOpen ? "expanded" : "collapsed",
+        open: isMobile ? openMobile.left : leftOpen,
+        setOpen: (value) => {
+          const newValue =
+            typeof value === "function" ? value(leftOpen) : value;
+          setSidebarState("left", newValue);
+        },
+        isMobile,
+        openMobile: openMobile.left,
+        setOpenMobile: (value) => {
+          const newValue =
+            typeof value === "function" ? value(openMobile.left) : value;
+          setOpenMobile((prev) => ({ ...prev, left: newValue }));
+        },
       },
-      isMobile,
-      openMobile: openMobile.left,
-      setOpenMobile: (value) => {
-        const newValue = typeof value === 'function' ? value(openMobile.left) : value;
-        setOpenMobile(prev => ({ ...prev, left: newValue }));
+      right: {
+        state: rightOpen ? "expanded" : "collapsed",
+        open: isMobile ? openMobile.right : rightOpen,
+        setOpen: (value) => {
+          const newValue =
+            typeof value === "function" ? value(rightOpen) : value;
+          setSidebarState("right", newValue);
+        },
+        isMobile,
+        openMobile: openMobile.right,
+        setOpenMobile: (value) => {
+          const newValue =
+            typeof value === "function" ? value(openMobile.right) : value;
+          setOpenMobile((prev) => ({ ...prev, right: newValue }));
+        },
       },
-    },
-    right: {
-      state: rightOpen ? 'expanded' : 'collapsed',
-      open: isMobile ? openMobile.right : rightOpen,
-      setOpen: (value) => {
-        const newValue = typeof value === 'function' ? value(rightOpen) : value;
-        setSidebarState('right', newValue);
-      },
-      isMobile,
-      openMobile: openMobile.right,
-      setOpenMobile: (value) => {
-        const newValue = typeof value === 'function' ? value(openMobile.right) : value;
-        setOpenMobile(prev => ({ ...prev, right: newValue }));
-      },
-    },
-    toggleSidebar,
-  }), [leftOpen, rightOpen, openMobile, isMobile, setSidebarState, toggleSidebar]);
+      toggleSidebar,
+    }),
+    [leftOpen, rightOpen, openMobile, isMobile, setSidebarState, toggleSidebar]
+  );
 
   return (
     <SidebarContext.Provider value={contextValue}>
@@ -225,7 +248,11 @@ function Sidebar({
 
   if (isMobile) {
     return (
-      <Sheet open={sidebar.openMobile} onOpenChange={sidebar.setOpenMobile} {...props}>
+      <Sheet
+        open={sidebar.openMobile}
+        onOpenChange={sidebar.setOpenMobile}
+        {...props}
+      >
         <SheetContent
           data-sidebar="sidebar"
           data-slot="sidebar"
@@ -609,7 +636,7 @@ function SidebarMenuAction({
         "peer-data-[size=lg]/menu-button:top-2.5",
         "group-data-[collapsible=icon]:hidden",
         showOnHover &&
-        "peer-data-[active=true]/menu-button:text-sidebar-accent-foreground group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 data-[state=open]:opacity-100 md:opacity-0",
+          "peer-data-[active=true]/menu-button:text-sidebar-accent-foreground group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 data-[state=open]:opacity-100 md:opacity-0",
         className
       )}
       {...props}

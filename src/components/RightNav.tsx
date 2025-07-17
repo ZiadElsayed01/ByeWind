@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import type * as React from "react"
-import { Bug, User, Wifi } from "lucide-react"
+import type * as React from "react";
+import { Bug, User, Wifi } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
@@ -10,9 +10,19 @@ import {
   SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuItem,
-} from "@/components/ui/sidebar"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { ScrollArea } from "@/components/ui/scroll-area"
+} from "@/components/ui/sidebar";
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import TimelineActivity from "./TimeLineActivity";
+import Frame from "@/assets/Frame.png";
+import AvatarMale06 from "@/assets/Avatar_Male_06.png";
+import Frame1 from "@/assets/Frame(1).png";
+import AvatarAbstract01 from "@/assets/Avatar_Abstract_01.png";
+import contact1 from "@/assets/contact1.png";
+import contact2 from "@/assets/contact2.png";
+import contact3 from "@/assets/contact3.png";
+import contact4 from "@/assets/contact4.png";
+import contact5 from "@/assets/contact5.png";
 
 const notificationsData = [
   {
@@ -39,97 +49,77 @@ const notificationsData = [
     message: "Andi Lane subscribed to you.",
     time: "Today, 11:59 AM",
   },
-]
+];
 
 const activitiesData = [
   {
     id: 1,
-    user: {
-      name: "User",
-      avatar: "/placeholder.svg?height=32&width=32",
-    },
-    action: "Changed the style.",
+    avatarSrc: Frame,
+    description: "Changed the style.",
     time: "Just now",
-    color: "bg-pink-500",
   },
   {
     id: 2,
-    user: {
-      name: "User",
-      avatar: "/placeholder.svg?height=32&width=32",
-    },
-    action: "Released a new version.",
+    avatarSrc: AvatarMale06,
+    description: "Released a new version.",
     time: "59 minutes ago",
-    color: "bg-orange-500",
   },
   {
     id: 3,
-    user: {
-      name: "User",
-      avatar: "/placeholder.svg?height=32&width=32",
-    },
-    action: "Submitted a bug.",
+    avatarSrc: Frame1,
+    description: "Submitted a bug.",
     time: "12 hours ago",
-    color: "bg-blue-500",
   },
   {
     id: 4,
-    user: {
-      name: "User",
-      avatar: "/placeholder.svg?height=32&width=32",
-    },
-    action: "Modified A data in Page X.",
+    avatarSrc: AvatarAbstract01,
+    description: "Modified A data in Page X.",
     time: "Today, 11:59 AM",
-    color: "bg-amber-600",
   },
   {
     id: 5,
-    user: {
-      name: "User",
-      avatar: "/placeholder.svg?height=32&width=32",
-    },
-    action: "Deleted a page in Project X.",
+    avatarSrc: Frame,
+    description: "Deleted a page in Project X.",
     time: "Feb 2, 2025",
-    color: "bg-teal-500",
   },
-]
+];
 
 const contactsData = [
   {
     id: 1,
     name: "Natali Craig",
-    avatar: "/placeholder.svg?height=32&width=32",
+    avatarSrc: contact1,
   },
   {
     id: 2,
     name: "Drew Cano",
-    avatar: "/placeholder.svg?height=32&width=32",
+    avatarSrc: contact2,
   },
   {
     id: 3,
     name: "Andi Lane",
-    avatar: "/placeholder.svg?height=32&width=32",
+    avatarSrc: contact3,
   },
   {
     id: 4,
     name: "Koray Okumus",
-    avatar: "/placeholder.svg?height=32&width=32",
+    avatarSrc: contact4,
   },
   {
     id: 5,
     name: "Kate Morrison",
-    avatar: "/placeholder.svg?height=32&width=32",
+    avatarSrc: contact5,
   },
   {
     id: 6,
     name: "Melody Macy",
-    avatar: "/placeholder.svg?height=32&width=32",
+    avatarSrc: Frame,
   },
-]
+];
 
 export function RightNav({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
-    <Sidebar side="right" className="w-65 fixed" {...props}>
+    <Sidebar side="right" className="fixed" {...props}>
       <SidebarContent>
         <ScrollArea className="h-full">
           {/* Notifications Section */}
@@ -148,8 +138,12 @@ export function RightNav({ ...props }: React.ComponentProps<typeof Sidebar>) {
                         </div>
                       </div>
                       <div className="flex-1 min-w-0">
-                        <p className="text-sm font-medium text-foreground">{notification.message}</p>
-                        <p className="text-xs text-muted-foreground mt-1">{notification.time}</p>
+                        <p className="text-sm font-medium text-foreground">
+                          {notification.message}
+                        </p>
+                        <p className="text-xs text-muted-foreground mt-1">
+                          {notification.time}
+                        </p>
                       </div>
                     </div>
                   </SidebarMenuItem>
@@ -164,23 +158,8 @@ export function RightNav({ ...props }: React.ComponentProps<typeof Sidebar>) {
               Activities
             </SidebarGroupLabel>
             <SidebarGroupContent>
-              <SidebarMenu>
-                {activitiesData.map((activity) => (
-                  <SidebarMenuItem key={activity.id} className="px-4 py-2">
-                    <div className="flex items-start gap-3">
-                      <div className="flex-shrink-0 relative">
-                        <Avatar className="w-8 h-8">
-                          <AvatarImage src={activity.user.avatar || "/placeholder.svg"} alt={activity.user.name} />
-                          <AvatarFallback className={activity.color}>{activity.user.name.charAt(0)}</AvatarFallback>
-                        </Avatar>
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <p className="text-sm font-medium text-foreground">{activity.action}</p>
-                        <p className="text-xs text-muted-foreground mt-1">{activity.time}</p>
-                      </div>
-                    </div>
-                  </SidebarMenuItem>
-                ))}
+              <SidebarMenu className="px-4 py-2">
+                <TimelineActivity activities={activitiesData} />
               </SidebarMenu>
             </SidebarGroupContent>
           </SidebarGroup>
@@ -196,16 +175,15 @@ export function RightNav({ ...props }: React.ComponentProps<typeof Sidebar>) {
                   <SidebarMenuItem key={contact.id} className="px-4 py-2">
                     <div className="flex items-center gap-3">
                       <Avatar className="w-8 h-8">
-                        <AvatarImage src={contact.avatar || "/placeholder.svg"} alt={contact.name} />
-                        <AvatarFallback>
-                          {contact.name
-                            .split(" ")
-                            .map((n) => n.charAt(0))
-                            .join("")}
-                        </AvatarFallback>
+                        <AvatarImage
+                          src={contact.avatarSrc}
+                          alt={contact.name}
+                        />
                       </Avatar>
                       <div className="flex-1 min-w-0">
-                        <p className="text-sm font-medium text-foreground truncate">{contact.name}</p>
+                        <p className="text-sm font-medium text-foreground truncate">
+                          {contact.name}
+                        </p>
                       </div>
                     </div>
                   </SidebarMenuItem>
@@ -216,5 +194,5 @@ export function RightNav({ ...props }: React.ComponentProps<typeof Sidebar>) {
         </ScrollArea>
       </SidebarContent>
     </Sidebar>
-  )
+  );
 }

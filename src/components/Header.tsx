@@ -15,10 +15,9 @@ import {
   BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
+} from "@/components/ui/breadcrumb";
 
 export function Header() {
-
   return (
     <header className={`p-3 border-b bg-background px-4 gap-4 w-full`}>
       {/* Left Section */}
@@ -31,13 +30,11 @@ export function Header() {
           <Breadcrumb>
             <BreadcrumbList>
               <BreadcrumbItem>
-                <BreadcrumbLink href="/">Dashboards</BreadcrumbLink>
+                <BreadcrumbLink to="/">Dashboards</BreadcrumbLink>
               </BreadcrumbItem>
-              <BreadcrumbSeparator>
-                /
-              </BreadcrumbSeparator>
+              <BreadcrumbSeparator>/</BreadcrumbSeparator>
               <BreadcrumbItem>
-                <BreadcrumbLink href="/components">Default</BreadcrumbLink>
+                <BreadcrumbLink to="/">Default</BreadcrumbLink>
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
@@ -66,9 +63,12 @@ export function Header() {
 
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon" className="h-8 w-8 relative">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="h-8 w-8 relative"
+                >
                   <Bell className="h-4 w-4" />
-                  <span className="absolute -top-1 -right-1 h-2 w-2 bg-red-500 rounded-full"></span>
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">

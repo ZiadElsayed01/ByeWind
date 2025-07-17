@@ -38,6 +38,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import footerLogo from "../assets/SnowUI_Logo.png";
+import { Link } from "react-router-dom";
 
 // Navigation data structure
 const navigationData = {
@@ -49,71 +50,71 @@ const navigationData = {
     {
       title: "Overview",
       icon: Dot,
-      url: "overview",
+      url: "/",
     },
     {
       title: "Projects",
       icon: Dot,
-      url: "projects",
+      url: "/projects",
     },
   ],
   dashboards: [
     {
       title: "Overview",
       icon: ChartPie,
-      url: "overview",
+      url: "/",
     },
     {
       title: "eCommerce",
       icon: ShoppingBag,
-      url: "e-commerce",
+      url: "/e-commerce",
       items: [
         {
           title: "Products",
-          url: "e-commerce/products",
+          url: "/e-commerce/products",
         },
         {
           title: "Orders",
-          url: "e-commerce/orders",
+          url: "/e-commerce/orders",
         },
         {
           title: "Customers",
-          url: "e-commerce/customers",
+          url: "/e-commerce/customers",
         },
         {
           title: "Analytics",
-          url: "e-commerce/analytics",
+          url: "/e-commerce/analytics",
         },
         {
           title: "Inventory",
-          url: "e-commerce/inventory",
+          url: "/e-commerce/inventory",
         },
       ],
     },
     {
       title: "Projects",
       icon: FolderClosed,
-      url: "projects",
+      url: "/projects",
       items: [
         {
           title: "Active Projects",
-          url: "projects/active-projects",
+          url: "/projects/active-projects",
         },
         {
           title: "Completed",
-          url: "projects/completed",
+          url: "/projects/completed",
         },
         {
           title: "Templates",
-          url: "projects/templates",
+          url: "/projects/templates",
         },
         {
           title: "Team",
-          url: "projects/team",
+          url: "/projects/team",
         },
         {
           title: "Reports",
-          url: "projects/reports",
+          url: "/projects/reports",
         },
       ],
     },
@@ -122,49 +123,49 @@ const navigationData = {
     {
       title: "User Profile",
       icon: SquareUser,
-      url: "user-profile",
+      url: "/user-profile",
       items: [
         {
           title: "Overview",
-          url: "user-profile/overview",
+          url: "/user-profile/overview",
         },
         {
           title: "Projects",
-          url: "user-profile/projects",
+          url: "/user-profile/projects",
         },
         {
           title: "Campaigns",
-          url: "user-profile/campaigns",
+          url: "/user-profile/campaigns",
         },
         {
           title: "Documents",
-          url: "user-profile/documents",
+          url: "/user-profile/documents",
         },
         {
           title: "Followers",
-          url: "user-profile/followers",
+          url: "/user-profile/followers",
         },
       ],
     },
     {
       title: "Account",
       icon: IdCard,
-      url: "account",
+      url: "/account",
     },
     {
       title: "Corporate",
       icon: Users,
-      url: "corporate",
+      url: "/corporate",
     },
     {
       title: "Blog",
       icon: FileText,
-      url: "blog",
+      url: "/blog",
     },
     {
       title: "Social",
       icon: Share2,
-      url: "social",
+      url: "/social",
     },
   ],
 };
@@ -216,10 +217,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               {navigationData.topLevel.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <a href={item.url} className="flex items-center gap-2">
+                    <Link to={item.url} className="flex items-center gap-2">
                       <item.icon className="h-4 w-4 text-gray-400" />
                       <span>{item.title}</span>
-                    </a>
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
@@ -250,7 +251,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                           {item.items.map((subItem) => (
                             <SidebarMenuSubItem key={subItem.title}>
                               <SidebarMenuSubButton asChild>
-                                <a href={subItem.url}>{subItem.title}</a>
+                                <Link to={subItem.url}>{subItem.title}</Link>
                               </SidebarMenuSubButton>
                             </SidebarMenuSubItem>
                           ))}
@@ -261,13 +262,13 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 ) : (
                   <SidebarMenuItem key={item.title}>
                     <SidebarMenuButton asChild>
-                      <a
-                        href={item.url}
+                      <Link
+                        to={item.url}
                         className="flex items-center gap-2 pl-8"
                       >
                         <item.icon className="h-4 w-4" />
                         <span>{item.title}</span>
-                      </a>
+                      </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 )
@@ -302,7 +303,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                         {item.items?.map((subItem) => (
                           <SidebarMenuSubItem key={subItem.title}>
                             <SidebarMenuSubButton asChild>
-                              <a href={subItem.url}>{subItem.title}</a>
+                              <Link to={subItem.url}>{subItem.title}</Link>
                             </SidebarMenuSubButton>
                           </SidebarMenuSubItem>
                         ))}
