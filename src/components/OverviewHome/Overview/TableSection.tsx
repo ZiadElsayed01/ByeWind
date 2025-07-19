@@ -17,7 +17,6 @@ import {
 import { Input } from "../../ui/input";
 import avatar from "../../../assets/avatar.png";
 import { Card } from "../../ui/card";
-import { Dot } from "lucide-react";
 import TableSkeleton from "../../TableSkeleton";
 import type { IUsers } from "@/types/Types";
 
@@ -32,7 +31,7 @@ export default function SessionTable() {
         "https://scopey.onrender.com/api/session/sessions"
       );
       const sessions = res.data.sessions;
-      const filteredData = sessions?.filter((e: IUsers) => e.clientName).slice(0, 5);
+      const filteredData = sessions?.filter((e: IUsers) => e.clientName);
       setData(filteredData);
     } catch (error) {
       console.log(error);
@@ -59,10 +58,10 @@ export default function SessionTable() {
 
   return (
     <Card className="mb-6 gap-3">
-      <div className="flex justify-between items-center gap-0 flex-wrap">
+      <div className="flex justify-between items-center gap-4 md:gap-0 flex-wrap">
         <Input
           placeholder="Search by nurse, total ...."
-          className="w-64"
+          className="w-full md:w-[49%]"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
@@ -71,7 +70,7 @@ export default function SessionTable() {
           value={statusFilter}
           onValueChange={(value) => setStatusFilter(value)}
         >
-          <SelectTrigger className="w-[180px]">
+          <SelectTrigger className="w-full md:w-[48%]">
             Filter by status
           </SelectTrigger>
           <SelectContent>
@@ -82,16 +81,16 @@ export default function SessionTable() {
         </Select>
       </div>
 
-      <h1 className="text-md font-semibold">
+      <h1 className="text-md font-semibold mt-3">
         Project Spendings
       </h1>
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead className="w-1/4">Manager</TableHead>
-            <TableHead className="w-1/4">Date</TableHead>
-            <TableHead className="w-1/4">Total</TableHead>
-            <TableHead className="w-1/4">Status</TableHead>
+            <TableHead className="w-1/3">Manager</TableHead>
+            <TableHead className="w-1/3">Date</TableHead>
+            <TableHead className="w-1/3">Total</TableHead>
+            <TableHead>Status</TableHead>
           </TableRow>
         </TableHeader>
 
@@ -118,7 +117,7 @@ export default function SessionTable() {
                     alt="avatar"
                     className="w-7 h-7 rounded-full"
                   />
-                  <p>{item.nurseName}</p>
+                  <p>{item.nurseName?.split(" ")[0]}</p>
                 </TableCell>
                 <TableCell className="py-3">
                   <p>
@@ -142,9 +141,8 @@ export default function SessionTable() {
                       : ""
                     }`}
                 >
-                  <p className="flex items-center">
-                    <Dot />
-                    {item.status}
+                  <p className="flex items-center justify-start">
+                    . {item.status}
                   </p>
                 </TableCell>
               </TableRow>

@@ -24,7 +24,7 @@ function MainLayout() {
           }`}
       >
         <Header />
-        <div className="flex-1 overflow-auto p-5 py-0">
+        <div className="flex-1 overflow-auto p-2 md:p-5 py-0">
           <Outlet />
         </div>
       </main>

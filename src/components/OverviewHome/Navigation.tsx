@@ -23,7 +23,7 @@ export default function Navigation() {
       <div className="md:flex items-center flex-wrap justify-between w-full bg-background p-5 text-muted-foreground">
         {/* Left navigation menu */}
         <NavigationMenu>
-          <NavigationMenuList className="flex flex-col md:flex-row gap-5 mb-3 lg:mb-0">
+          <NavigationMenuList className="grid grid-cols-4 md:flex md:flex-row gap-5 mb-6 md:mb-0">
             {navItems.map((item, index) => (
               <NavigationMenuLink key={index} asChild>
                 <NavLink

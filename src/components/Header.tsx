@@ -24,8 +24,8 @@ export function Header() {
       {/* Left Section */}
       <div className="flex items-center justify-between gap-3 text-primary">
         <div className="flex items-center gap-4">
-          <SidebarTrigger side="left" className="h-6 w-6" />
-          <Button variant="ghost" size="icon" className="h-6 w-6">
+          <SidebarTrigger side="left" className="h-6 w-6 cursor-pointer" />
+          <Button variant="ghost" size="icon" className="h-6 w-6 cursor-pointer">
             <Star className="h-4 w-4" />
           </Button>
           <Breadcrumb className="hidden md:block">
@@ -54,11 +54,11 @@ export function Header() {
             </div>
           </div>
           <div className="flex items-center gap-1">
-            <Button variant="ghost" size="icon" className="h-8 w-8">
+            <Button variant="ghost" size="icon" className="h-8 w-8 cursor-pointer">
               <DarkModeToggler />
             </Button>
 
-            <Button variant="ghost" size="icon" className="h-8 w-8">
+            <Button variant="ghost" size="icon" className="h-8 w-8 cursor-pointer">
               <RotateCcw className="h-4 w-4" />
             </Button>
 
@@ -67,7 +67,7 @@ export function Header() {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="h-8 w-8 relative"
+                  className="h-8 w-8 relative cursor-pointer"
                 >
                   <Bell className="h-4 w-4" />
                 </Button>
@@ -78,7 +78,7 @@ export function Header() {
               </DropdownMenuContent>
             </DropdownMenu>
 
-            <SidebarTrigger side="right" className="h-6 w-6" />
+            <SidebarTrigger side="right" className="h-6 w-6 cursor-pointer" />
           </div>
         </div>
       </div>
