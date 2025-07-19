@@ -30,7 +30,7 @@ export default function ProgressSection() {
                   className="h-6 w-40 mt-1 relative"
                   text={
                     <>
-                      In Progress<span className="text-gray-400 mx-1"> / </span>
+                      In Progress<span className="text-gray-500 mx-1"> / </span>
                       51%
                     </>
                   }
@@ -43,7 +43,7 @@ export default function ProgressSection() {
             title="Total Tasks"
             content={
               <>
-                15 <span className="text-gray-300">/</span> 48
+                15 <span className="text-gray-500">/</span> 48
               </>
             }
             className="lg:px-6"
@@ -55,7 +55,7 @@ export default function ProgressSection() {
             className="lg:px-6"
           />
         </div>
-        <div className="flex flex-row flex-wrap items-center gap-12">
+        <div className="flex flex-row flex-wrap items-center gap-12 mt-6 lg:mt-0">
           <div className="*:data-[slot=avatar]:ring-background flex -space-x-2">
             <Avatar>
               <AvatarImage src={avatar} alt="@shadcn" />
@@ -64,7 +64,7 @@ export default function ProgressSection() {
               <AvatarImage src={frame} alt="@shadcn" />
             </Avatar>
             <Avatar>
-              <AvatarFallback className="bg-[#edeefc]">+3</AvatarFallback>
+              <AvatarFallback className="bg-[#edeefc] text-black">+3</AvatarFallback>
             </Avatar>
           </div>
         </div>

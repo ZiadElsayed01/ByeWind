@@ -37,7 +37,7 @@ function FileInputButton({ className, ...props }: React.ComponentProps<"input">)
         type="button"
         onClick={handleClick}
         className={cn(
-          "inline-flex items-center justify-center rounded-md bg-gray-200 text-black px-4 py-2 text-sm font-medium shadow hover:bg-primary/90 transition",
+          "text-primary inline-flex items-center justify-center rounded-md bg-foreground px-4 py-2 text-sm font-medium",
           className
         )}
       >

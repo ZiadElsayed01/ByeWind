@@ -4,6 +4,7 @@ import Layout from "./components/Layout";
 import Notfound from "./pages/Notfound";
 import OverviewHome from "./pages/OverviewHome";
 import Overview from "./components/Overview";
+import { ThemeProvider } from "./contexts/ThemeContext";
 
 const routers = createBrowserRouter([
   {
@@ -49,7 +50,7 @@ const routers = createBrowserRouter([
         path: "/user-profile",
         element: <Notfound />,
         children: [
-          { path: "overview", element: <Notfound /> }, // ✅ بدون /
+          { path: "overview", element: <Notfound /> },
           { path: "projects", element: <Notfound /> },
           { path: "campaigns", element: <Notfound /> },
           { path: "documents", element: <Notfound /> },
@@ -77,7 +78,11 @@ const routers = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={routers} />;
+  return (
+    <ThemeProvider>
+      <RouterProvider router={routers} />
+    </ThemeProvider>
+  );
 }
 
 export default App;

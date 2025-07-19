@@ -286,7 +286,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               {navigationData.pages.map((item) => (
                 <Collapsible
                   key={item.title}
-                  defaultOpen={item.title === "User Profile"}
                   className="group/collapsible"
                 >
                   <SidebarMenuItem>

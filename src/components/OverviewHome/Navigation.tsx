@@ -20,7 +20,7 @@ const navItems = [
 export default function Navigation() {
   return (
     <>
-      <div className="md:flex items-center flex-wrap justify-between w-full bg-white p-5">
+      <div className="md:flex items-center flex-wrap justify-between w-full bg-background p-5 text-muted-foreground">
         {/* Left navigation menu */}
         <NavigationMenu>
           <NavigationMenuList className="flex flex-col md:flex-row gap-5 mb-3 lg:mb-0">
@@ -28,7 +28,7 @@ export default function Navigation() {
               <NavigationMenuLink key={index} asChild>
                 <NavLink
                   to={item.path}
-                  className={`text-sm py-1 font-medium text-gray-400`}
+                  className={`text-sm py-1 font-medium `}
                 >
                   {item.name}
                 </NavLink>
@@ -40,20 +40,18 @@ export default function Navigation() {
         {/* Right actions */}
         <div className="flex items-center gap-2">
           <Button
-            variant="secondary"
             size="sm"
-            className="text-sm text-gray-400"
+            className="text-sm text-muted-foreground bg-foreground"
           >
             + Add User
           </Button>
           <Button
-            variant="secondary"
             size="sm"
-            className="text-sm text-gray-400"
+            className="text-sm text-muted-foreground bg-foreground"
           >
             Add Target
           </Button>
-          <Button variant="secondary" size="sm" className="text-sm">
+          <Button size="sm" className="text-sm bg-foreground">
             <MoreHorizontal className="h-4 w-4" />
           </Button>
         </div>

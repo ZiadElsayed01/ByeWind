@@ -29,11 +29,11 @@ export default function Timeline() {
           <div
             key={index}
             onClick={() => handleSelect(index)}
-            className={`flex flex-col items-center p-2 rounded-lg cursor-pointer transition-all duration-200 ${isActive ? "bg-black text-white" : "text-gray-600 hover:bg-gray-100"
+            className={`flex flex-col items-center p-2 rounded-lg cursor-pointer transition-all duration-200 ${isActive ? "bg-secondary" : "text-gray-600 hover:bg-gray-100"
               }`}
           >
-            <span className="text-xs font-medium">{day.day}</span>
-            <span className="text-lg font-bold">{day.date}</span>
+            <span className={`text-xs font-medium ${isActive && "text-white"}`}>{day.day}</span>
+            <span className={`text-lg font-bold text-primary ${isActive && "text-white"}`}>{day.date}</span>
           </div>
         );
       })}

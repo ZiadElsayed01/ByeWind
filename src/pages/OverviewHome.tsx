@@ -1,7 +1,7 @@
 import ProgressSection from "@/components/OverviewHome/Overview/ProgressSection";
 import OnRoadSection from "@/components/OverviewHome/Overview/OnRoadSection";
 import LatestFiles from "@/components/OverviewHome/Overview/LatestFiles";
-import TableSection from "@/components/TableSection";
+import TableSection from "@/components/OverviewHome/Overview/TableSection";
 
 export default function OverviewHome() {
   return (

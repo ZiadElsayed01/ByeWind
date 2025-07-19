@@ -15,14 +15,17 @@ import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import TimelineActivity from "./TimeLineActivity";
 import Frame from "@/assets/Frame.png";
-import AvatarMale06 from "@/assets/Avatar_Male_06.png";
-import Frame1 from "@/assets/Frame(1).png";
-import AvatarAbstract01 from "@/assets/Avatar_Abstract_01.png";
 import contact1 from "@/assets/contact1.png";
 import contact2 from "@/assets/contact2.png";
 import contact3 from "@/assets/contact3.png";
 import contact4 from "@/assets/contact4.png";
 import contact5 from "@/assets/contact5.png";
+import Act1 from "@/assets/Act1.png";
+import Act2 from "@/assets/Act2.png";
+import Act3 from "@/assets/Act3.png";
+import Act4 from "@/assets/Act4.png";
+import Act5 from "@/assets/Act5.png";
+
 
 const notificationsData = [
   {
@@ -54,31 +57,31 @@ const notificationsData = [
 const activitiesData = [
   {
     id: 1,
-    avatarSrc: Frame,
+    avatarSrc: Act1,
     description: "Changed the style.",
     time: "Just now",
   },
   {
     id: 2,
-    avatarSrc: AvatarMale06,
+    avatarSrc: Act2,
     description: "Released a new version.",
     time: "59 minutes ago",
   },
   {
     id: 3,
-    avatarSrc: Frame1,
+    avatarSrc: Act3,
     description: "Submitted a bug.",
     time: "12 hours ago",
   },
   {
     id: 4,
-    avatarSrc: AvatarAbstract01,
+    avatarSrc: Act4,
     description: "Modified A data in Page X.",
     time: "Today, 11:59 AM",
   },
   {
     id: 5,
-    avatarSrc: Frame,
+    avatarSrc: Act5,
     description: "Deleted a page in Project X.",
     time: "Feb 2, 2025",
   },
@@ -124,21 +127,21 @@ export function RightNav({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <ScrollArea className="h-full">
           {/* Notifications Section */}
           <SidebarGroup>
-            <SidebarGroupLabel className="text-base font-semibold text-foreground px-4 py-3">
+            <SidebarGroupLabel className="font-semibold px-4 py-3">
               Notifications
             </SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu>
-                {notificationsData.map((notification) => (
+                {notificationsData.map((notification, i) => (
                   <SidebarMenuItem key={notification.id} className="px-4 py-2">
                     <div className="flex items-start gap-3">
                       <div className="flex-shrink-0 mt-1">
-                        <div className="w-8 h-8 bg-muted rounded-lg flex items-center justify-center">
-                          <notification.icon className="w-4 h-4 text-muted-foreground" />
+                        <div className={`w-8 h-8 text-black ${((i + 1) % 2 === 0 ? "bg-[#edeefc]" : "bg-[#e6f1fd]")}  rounded-lg flex items-center justify-center`}>
+                          <notification.icon className="w-4 h-4" />
                         </div>
                       </div>
                       <div className="flex-1 min-w-0">
-                        <p className="text-sm font-medium text-foreground">
+                        <p className="text-sm">
                           {notification.message}
                         </p>
                         <p className="text-xs text-muted-foreground mt-1">
@@ -154,7 +157,7 @@ export function RightNav({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
           {/* Activities Section */}
           <SidebarGroup>
-            <SidebarGroupLabel className="text-base font-semibold text-foreground px-4 py-3">
+            <SidebarGroupLabel className="font-semibold  px-4 py-3">
               Activities
             </SidebarGroupLabel>
             <SidebarGroupContent>
@@ -166,7 +169,7 @@ export function RightNav({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
           {/* Contacts Section */}
           <SidebarGroup>
-            <SidebarGroupLabel className="text-base font-semibold text-foreground px-4 py-3">
+            <SidebarGroupLabel className="px-4 py-3">
               Contacts
             </SidebarGroupLabel>
             <SidebarGroupContent>
@@ -181,7 +184,7 @@ export function RightNav({ ...props }: React.ComponentProps<typeof Sidebar>) {
                         />
                       </Avatar>
                       <div className="flex-1 min-w-0">
-                        <p className="text-sm font-medium text-foreground truncate">
+                        <p className="text-sm font-medium truncate">
                           {contact.name}
                         </p>
                       </div>
